@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<?= url()?>public/admin/vendors/jquery-bar-rating/fontawesome-stars-o.css">
     <link rel="stylesheet" href="<?= url()?>public/admin/vendors/jquery-bar-rating/fontawesome-stars.css">
     <link rel="stylesheet" href="<?= url()?>public/admin/css/style.css">
+    <link rel="stylesheet" href="<?=url()?>public/user/toastr.css">
+
 </head>
 
 <body>
@@ -42,7 +44,7 @@
                             <a class="dropdown-item preview-item">
                                 <i class="icon-head"></i> Profile
                             </a>
-                            <a class="dropdown-item preview-item">
+                            <a class="dropdown-item preview-item" href="<?=url()?>logout">
                                 <i class="icon-inbox"></i> Logout
                             </a>
                         </div>
@@ -140,6 +142,18 @@
     <script src="<?= url()?>public/admin/js/hoverable-collapse.js"></script>
     <script src="<?= url()?>public/admin/js/template.js"></script>
     <script src="<?= url()?>public/admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="<?=url()?>public/user/toastr.min.js"></script>
+    <?php
+          if(isset($_SESSION['success'])){
+              echo "<script> toastr.success('".$_SESSION['success']."') </script>";
+              unset($_SESSION['success']);
+          }
+          if(isset($_SESSION['error'])){
+            echo "<script> toastr.error('".$_SESSION['error']."') </script>";
+            unset($_SESSION['error']);
+        }
+       
+          ?>
     <?php startblock('js') ?>
     <?php endblock() ?>
 </body>

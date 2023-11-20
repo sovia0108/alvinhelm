@@ -11,7 +11,14 @@ switch ($url) {
     case '':
         include('view/user/landingpage.php');
         break;
+    case 'login':
+            include('view/user/login.php');
+            break;
+    case 'logout':
+        include('view/user/logout.php');
+        break;
     case 'admin':
+            auth();
             include('view/admin/dashboard.php');
             break;
     default:

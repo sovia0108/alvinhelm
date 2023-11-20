@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?=url()?>public/user/css/magnific-popup.css">
     <link rel="stylesheet" href="<?=url()?>public/user/css/slick.css">
     <link rel="stylesheet" href="<?=url()?>public/user/css/style.css">
+    <link rel="stylesheet" href="<?=url()?>public/user/toastr.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                                 <a href="#">
                                     <i class="fas fa-cart-plus" data-count="0"></i>
                                 </a>
-                                <a href="<?=url()?>admin">
+                                <a href="<?= isset($_SESSION['user']) ? $_SESSION['user']['role'] == 'admin' ? url().'admin' :  url().'user' : url().'login' ?>">
                                     <i class="fas fa-user"></i>
                                 </a>
                             </div>
@@ -175,6 +176,20 @@
     <script src="<?=url()?>public/user/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="<?=url()?>public/user/js/custom.js"></script>
+    <script src="<?=url()?>public/user/toastr.min.js"></script>
+
+      
+    <?php
+          if(isset($_SESSION['success'])){
+              echo "<script> toastr.success('".$_SESSION['success']."') </script>";
+              unset($_SESSION['success']);
+          }
+          if(isset($_SESSION['error'])){
+            echo "<script> toastr.error('".$_SESSION['error']."') </script>";
+            unset($_SESSION['error']);
+        }
+       
+          ?>
 </body>
 
 </html>

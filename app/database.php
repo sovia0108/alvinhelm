@@ -4,11 +4,11 @@ $database = "alvinhelm";
 $username = "root";
 $password = "";
 //  melakukan koneksi databse
-// $con = mysqli_connect($servername, $username, $password, $database);
-// //  cek koneksi
-// if (!$con) {
-//     die("Connection failed: " . mysqli_connect_error());
-// }
+$con = mysqli_connect($servername, $username, $password, $database);
+//  cek koneksi
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 // Class xquery untuk memudahkan query database
 Class xquery{
